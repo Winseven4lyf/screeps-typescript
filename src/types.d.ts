@@ -1,20 +1,21 @@
-// example declaration file - remove these and add your own custom typings
-
-// memory extension samples
-interface CreepMemory {
-  role: string;
-  room: string;
-  working: boolean;
-}
+type AllianceConstant = ALLIANCE_ENEMY | ALLIANCE_UNFRIENDLY | ALLIANCE_NEUTRAL | ALLIANCE_FRIENDLY | ALLIANCE_ALLY;
+type ALLIANCE_ENEMY = -2;
+type ALLIANCE_UNFRIENDLY = -1;
+type ALLIANCE_NEUTRAL = 0;
+type ALLIANCE_FRIENDLY = 1;
+type ALLIANCE_ALLY = 2;
 
 interface Memory {
-  uuid: number;
-  log: any;
+  warfare: {
+    alliance: {
+      [username: string]: AllianceConstant;
+    };
+  };
 }
 
-// `global` extension samples
 declare namespace NodeJS {
   interface Global {
-    log: any;
+    getAlliance: (username: string) => AllianceConstant;
+    setAlliance: (username: string, alliance: AllianceConstant) => void;
   }
 }

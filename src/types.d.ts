@@ -15,6 +15,7 @@ interface Memory {
 
 declare namespace NodeJS {
   interface Global {
+    // Console commands.
     getAlliance: (username: string) => AllianceConstant;
     setAlliance: (username: string, alliance: AllianceConstant) => void;
   }

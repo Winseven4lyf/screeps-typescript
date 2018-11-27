@@ -2,6 +2,9 @@ import { ALLIANCE_ALLY, ALLIANCE_ENEMY, ALLIANCE_FRIENDLY, ALLIANCE_NEUTRAL, ALL
 import { Tickable } from "Tickable";
 import { AllianceManager } from "./AllianceManager";
 
+/**
+ * Manages towers for defence.
+ */
 export class TowerManager implements Tickable {
   private allianceManager: AllianceManager;
 
@@ -10,6 +13,7 @@ export class TowerManager implements Tickable {
   }
 
   public tick() {
+    // Get towers per room.
     const groups = _(Game.structures)
       .filter<StructureTower>("structureType", STRUCTURE_TOWER)
       .groupBy("room.name")
